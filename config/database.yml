@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  database: holiday-track-development
+  pool: 5
+  timeout: 5000
+  user: postgres
+  password:
+
+test:
+  adapter: postgresql
+  database: holiday-track-test
+  pool: 5
+  timeout: 5000
+  user: postgres
+  password:
+
+production:
+  adapter: postgresql
+  database: holiday-track
+  pool: 5
+  timeout: 5000
+  user: postgres
+  password:
