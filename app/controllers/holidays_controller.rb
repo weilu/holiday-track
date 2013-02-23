@@ -2,7 +2,10 @@ class HolidaysController < ApplicationController
   # GET /holidays
   # GET /holidays.json
   def index
-    @holidays = Holiday.all
+    @holidays = Holiday.scoped
+    user_id = params[:user_id]
+    @holidays = @holidays.where(user_id: user_id) if user_id.present?
+
     @holiday = Holiday.new
 
     respond_to do |format|

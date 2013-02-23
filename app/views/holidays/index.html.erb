@@ -37,5 +37,18 @@
   </tbody>
 </table>
 
+<h2>Filter</h2>
+<%= form_tag holidays_path, method: :get, :html => { :class => 'form-horizontal' } do %>
+  <%= label_tag :start_date %>
+  <%= text_field_tag :start_date %>
+  <%= label_tag :end_date %>
+  <%= text_field_tag :end_date %>
+  <%= label_tag :user %>
+  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name), include_blank: true %>
+  <div class="form-actions">
+    <%= button_tag :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>
+
 <h2>New Holiday</h2>
 <%= render :partial => 'form' %>
