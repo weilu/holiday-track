@@ -5,6 +5,8 @@ class HolidaysController < ApplicationController
     @holidays = Holiday.scoped
     user_id = params[:user_id]
     @holidays = @holidays.where(user_id: user_id) if user_id.present?
+    @holidays = @holidays.where("NOT start_date > ?", params[:end_date]) if params[:end_date].present?
+    @holidays = @holidays.where("NOT end_date < ?", params[:start_date]) if params[:start_date].present?
 
     @holiday = Holiday.new
 

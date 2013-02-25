@@ -40,11 +40,11 @@
 <h2>Filter</h2>
 <%= form_tag holidays_path, method: :get, :html => { :class => 'form-horizontal' } do %>
   <%= label_tag :start_date %>
-  <%= text_field_tag :start_date %>
+  <%= text_field_tag :start_date, params[:start_date], class: 'js-datepicker' %>
   <%= label_tag :end_date %>
-  <%= text_field_tag :end_date %>
+  <%= text_field_tag :end_date, params[:end_date], class: 'js-datepicker'  %>
   <%= label_tag :user %>
-  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name), include_blank: true %>
+  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name, params[:user_id]), prompt: 'All' %>
   <div class="form-actions">
     <%= button_tag :submit, :class => 'btn-primary' %>
   </div>
