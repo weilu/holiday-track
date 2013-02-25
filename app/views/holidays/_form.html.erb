@@ -1,8 +1,8 @@
 <%= simple_form_for @holiday, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :note %>
   <%= f.association :user, label_method: :name, value_method: :id, prompt: 'All' %>
+  <%= f.input :start_date, as: :string, input_html: { class: 'js-datepicker' } %>
+  <%= f.input :end_date , as: :string, input_html: { class: 'js-datepicker' } %>
+  <%= f.input :note, input_html: { rows: '4' } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

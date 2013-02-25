@@ -2,6 +2,18 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<h2>Filter</h2>
+<%= form_tag holidays_path, method: :get, class: 'form-inline'  do %>
+  <%= label_tag :start_date %>
+  <%= text_field_tag :start_date, params[:start_date], class: 'js-datepicker' %>
+  <%= label_tag :end_date %>
+  <%= text_field_tag :end_date, params[:end_date], class: 'js-datepicker'  %>
+  <%= label_tag :user %>
+  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name, params[:user_id]), prompt: 'All' %>
+  <%= submit_tag :submit, :class => 'btn btn-primary' %>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -36,19 +48,6 @@
     <% end %>
   </tbody>
 </table>
-
-<h2>Filter</h2>
-<%= form_tag holidays_path, method: :get, :html => { :class => 'form-horizontal' } do %>
-  <%= label_tag :start_date %>
-  <%= text_field_tag :start_date, params[:start_date], class: 'js-datepicker' %>
-  <%= label_tag :end_date %>
-  <%= text_field_tag :end_date, params[:end_date], class: 'js-datepicker'  %>
-  <%= label_tag :user %>
-  <%= select_tag :user_id, options_from_collection_for_select(User.all, :id, :name, params[:user_id]), prompt: 'All' %>
-  <div class="form-actions">
-    <%= button_tag :submit, :class => 'btn-primary' %>
-  </div>
-<% end %>
 
 <h2>New Holiday</h2>
 <%= render :partial => 'form' %>
